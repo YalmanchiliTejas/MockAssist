@@ -1,0 +1,154 @@
+# NeetCode 150 starter list
+This is the public NeetCode 150 backlog used as the initial study list for this workspace.
+It is derived from the public site bundle and kept as a human-readable planning list rather than a scraped problem archive.
+
+- Arrays & Hashing: Concatenation of Array
+- Arrays & Hashing: Valid Anagram
+- Arrays & Hashing: Replace Elements With Greatest Element On Right Side
+- Arrays & Hashing: Max Consecutive Ones
+- Arrays & Hashing: Pascals Triangle
+- Arrays & Hashing: Encode and Decode Strings
+- Arrays & Hashing: Range Sum Query 2D Immutable
+- Arrays & Hashing: Minimum Number of Operations to Move All Balls to Each Box
+- Arrays & Hashing: Longest Consecutive Sequence
+- Arrays & Hashing: Encode and Decode TinyURL
+- Two Pointers: Valid Palindrome II
+- Two Pointers: 3Sum
+- Two Pointers: 4Sum
+- Two Pointers: Number of Subsequences That Satisfy The Given Sum Condition
+- Sliding Window: Contains Duplicate II
+- Sliding Window: Minimum Recolors to Get K Consecutive Black Blocks
+- Sliding Window: Longest Repeating Character Replacement
+- Sliding Window: Permutation In String
+- Sliding Window: Frequency of The Most Frequent Element
+- Sliding Window: Sliding Window Maximum
+- Sliding Window: Subarrays with K Different Integers
+- Stack: Implement Stack Using Queues
+- Stack: Evaluate Reverse Polish Notation
+- Stack: Removing Stars From a String
+- Stack: Online Stock Span
+- Stack: Simplify Path
+- Stack: Shortest Subarray with Sum at Least K
+- Binary Search: Search Insert Position
+- Binary Search: Koko Eating Bananas
+- Binary Search: Capacity to Ship Packages Within D Days
+- Binary Search: Search In Rotated Sorted Array
+- Binary Search: Search In Rotated Sorted Array II
+- Binary Search: Find First And Last Position of Element In Sorted Array
+- Binary Search: Find in Mountain Array
+- Linked List: Merge Two Sorted Lists
+- Linked List: Linked List Cycle
+- Linked List: Palindrome Linked List
+- Linked List: Maximum Twin Sum Of A Linked List
+- Linked List: Delete Nodes From Linked List Present in Array
+- Linked List: Design Linked List
+- Linked List: Add Two Numbers II
+- Linked List: Swap Nodes In Pairs
+- Linked List: Remove Duplicates From an Unsorted Linked List
+- Linked List: Reverse Nodes In K Group
+- Trees: Binary Tree Inorder Traversal
+- Trees: Maximum Depth of Binary Tree
+- Trees: Diameter of Binary Tree
+- Trees: Balanced Binary Tree
+- Trees: Same Tree
+- Trees: Subtree of Another Tree
+- Trees: Convert Sorted Array to Binary Search Tree
+- Trees: Insert into a Binary Search Tree
+- Trees: Binary Tree Right Side View
+- Trees: Reverse Odd Levels of Binary Tree
+- Trees: Validate Binary Search Tree
+- Trees: Kth Smallest Element In a Bst
+- Trees: Recover Binary Search Tree
+- Trees: Construct Binary Tree from Preorder and Postorder Traversal
+- Trees: Serialize And Deserialize Binary Tree
+- Heap / Priority Queue: Kth Largest Element In a Stream
+- Heap / Priority Queue: Last Stone Weight
+- Heap / Priority Queue: Take Gifts From the Richest Pile
+- Heap / Priority Queue: Kth Largest Element In An Array
+- Heap / Priority Queue: Task Scheduler
+- Heap / Priority Queue: Design Twitter
+- Heap / Priority Queue: Least Number of Unique Integers after K Removal
+- Heap / Priority Queue: Maximum Performance of a Team
+- Backtracking: Combination Sum
+- Backtracking: Combination Sum II
+- Backtracking: Combinations
+- Backtracking: Subsets II
+- Backtracking: Permutations II
+- Backtracking: Letter Tile Possibilities
+- Backtracking: Palindrome Partitioning
+- Backtracking: Restore IP Addresses
+- Backtracking: The k-th Lexicographical String of All Happy Strings of Length n
+- Backtracking: N Queens II
+- Tries: Design Add And Search Words Data Structure
+- Tries: Counting Words With a Given Prefix
+- Tries: Sum of Prefix Scores of Strings
+- Graphs: Max Area of Island
+- Graphs: Maximum Number of Fish in a Grid
+- Graphs: Walls And Gates
+- Graphs: Rotting Oranges
+- Graphs: Count Sub Islands
+- Graphs: Surrounded Regions
+- Graphs: Reorder Routes to Make All Paths Lead to The City Zero
+- Graphs: Course Schedule II
+- Graphs: Graph Valid Tree
+- Graphs: Course Schedule IV
+- Graphs: Redundant Connection
+- Graphs: Accounts Merge
+- Graphs: Parallel Courses III
+- Advanced Graphs: Reconstruct Itinerary
+- Advanced Graphs: Min Cost to Connect All Points
+- Advanced Graphs: Path with Maximum Probability
+- Advanced Graphs: Alien Dictionary
+- Advanced Graphs: Trapping Rain Water II
+- Advanced Graphs: Find the City With the Smallest Number of Neighbors at a Threshold Distance
+- 1-D Dynamic Programming: Min Cost Climbing Stairs
+- 1-D Dynamic Programming: N-th Tribonacci Number
+- 1-D Dynamic Programming: House Robber II
+- 1-D Dynamic Programming: Paint House
+- 1-D Dynamic Programming: Palindromic Substrings
+- 1-D Dynamic Programming: Decode Ways
+- 1-D Dynamic Programming: Coin Change
+- 1-D Dynamic Programming: Maximum Product Subarray
+- 1-D Dynamic Programming: Word Break
+- 1-D Dynamic Programming: Longest Increasing Subsequence
+- 1-D Dynamic Programming: Partition Equal Subset Sum
+- 1-D Dynamic Programming: Triangle
+- 2-D Dynamic Programming: Unique Paths II
+- 2-D Dynamic Programming: Longest Palindromic Subsequence
+- 2-D Dynamic Programming: Coin Change II
+- 2-D Dynamic Programming: Target Sum
+- 2-D Dynamic Programming: Interleaving String
+- 2-D Dynamic Programming: Stone Game
+- 2-D Dynamic Programming: Maximal Square
+- 2-D Dynamic Programming: Edit Distance
+- 2-D Dynamic Programming: Number of Dice Rolls with Target Sum
+- 2-D Dynamic Programming: Number of Ways to Rearrange Sticks With K Sticks Visible
+- 2-D Dynamic Programming: Flip String to Monotone Increasing
+- Greedy: Maximum Absolute Sum of Any Subarray
+- Greedy: Jump Game II
+- Greedy: Jump Game VII
+- Greedy: Hand of Straights
+- Greedy: Minimum Number of Changes to Make Binary String Beautiful
+- Greedy: Partition Labels
+- Greedy: Valid Parenthesis String
+- Greedy: Check if a Parentheses String Can Be Valid
+- Intervals: Merge Intervals
+- Intervals: Non Overlapping Intervals
+- Intervals: Interval List Intersections
+- Intervals: Meeting Rooms II
+- Intervals: Meeting Rooms III
+- Intervals: Data Stream as Disjoint Intervals
+- Math & Geometry: Spiral Matrix
+- Math & Geometry: Spiral Matrix II
+- Math & Geometry: Happy Number
+- Math & Geometry: Plus One
+- Math & Geometry: Palindrome Number
+- Math & Geometry: Find the Punishment Number of an Integer
+- Math & Geometry: Detect Squares
+- Math & Geometry: Robot Bounded In Circle
+- Bit Manipulation: Count Triplets with Even XOR Set Bits I
+- Bit Manipulation: Counting Bits
+- Bit Manipulation: Add Binary
+- Bit Manipulation: Missing Number
+- Bit Manipulation: Shuffle the Array
+- Bit Manipulation: Reverse Integer

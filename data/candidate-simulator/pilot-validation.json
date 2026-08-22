@@ -1,0 +1,29 @@
+{
+  "category_counts": {
+    "backtracking": 2,
+    "binary_search": 3,
+    "dynamic_programming": 2,
+    "general": 2,
+    "graph": 2,
+    "hashing": 3,
+    "heap": 3,
+    "linked_list": 2,
+    "math": 1,
+    "matrix": 1,
+    "prefix_sum": 1,
+    "sorting_intervals": 3,
+    "stack_queue": 2,
+    "string": 1,
+    "tree": 2,
+    "two_pointers": 2
+  },
+  "generator_counts": {
+    "heuristic_editorial_v1": 27,
+    "manual_reviewed_v1": 5
+  },
+  "issues": [],
+  "problem_count": 32,
+  "profiles_per_problem": 8,
+  "total_scenarios": 256,
+  "valid": true
+}

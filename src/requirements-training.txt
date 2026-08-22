@@ -1,0 +1,15 @@
+torch
+transformers>=5.2.0,<6
+pyarrow>=21,<22
+datasets>=4.7.0,<5
+trl==1.8.0
+peft>=0.17.0,<1
+accelerate>=1.4.0,<2
+openenv>=0.4.1
+openai>=1.0.0
+Pillow
+torchvision
+num2words==0.5.14
+jmespath
+tensorboard
+modal

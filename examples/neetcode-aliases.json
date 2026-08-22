@@ -1,0 +1,8 @@
+{
+  "combination-sum": "combination-target-sum",
+  "contains-duplicate": "duplicate-integer",
+  "diameter-of-binary-tree": "binary-tree-diameter",
+  "group-anagrams": "anagram-groups",
+  "letter-combinations-of-a-phone-number": "combinations-of-a-phone-number",
+  "two-sum": "two-integer-sum"
+}
