@@ -132,11 +132,11 @@ A plain input line becomes an `ASK`. Send JSON for a structured action:
 {"action_type":"HINT","message":"Could lookup be faster?","target_concept":"hash_map_complements","hint_level":2}
 ```
 
-Use `--actor openai --base-url <compatible-v1-url> --model <model>` for an
-OpenAI-compatible chat-completions endpoint. `OPENAI_BASE_URL`, `OPENAI_MODEL`, and
-`OPENAI_API_KEY` are also recognized. The endpoint receives only the allow-listed
-public actor context; it never receives the editorial, unknown concepts, unlock
-thresholds, planned bug, or evaluator state.
+The Modal training path uses the local `Qwen/Qwen3.5-4B` model for candidate
+responses. Set `MOCKASSIST_CANDIDATE_MODEL` to change the Hugging Face model ID.
+The model is loaded lazily in each worker and receives only the allow-listed public
+actor context; it never receives the editorial, unknown concepts, unlock thresholds,
+planned bug, or evaluator state.
 
 The final JSONL trajectory contains the private before/after states for offline
 analysis. Those fields are deliberately excluded from every interviewer observation.
@@ -167,6 +167,91 @@ uses a deliberately incomplete universal bug fixture where it cannot safely deri
 problem-specific faulty implementation.
 
 ## First interviewer training loop
+
+### GRPO checkpoint evaluation
+
+Reserve a problem-level test partition when training the GRPO interviewer. This
+keeps all candidate profiles for a held-out problem out of training:
+
+```bash
+modal run src/modal_train.py::train --run-name run-001 --heldout-fraction 0.1
+modal run --detach src/modal_train.py::evaluate \
+  --run-name run-001 \
+  --heldout-fraction 0.1 \
+  --evaluation-name evaluation-smoke \
+  --profiles strong \
+  --seeds 0
+```
+
+The Modal evaluator defaults to this single-problem, single-profile, single-seed
+smoke test on one `L4`. The 9B interviewer stays on the GPU while a 0.8B candidate
+simulator runs on CPU; both generations are capped at 256 tokens. The function has
+an explicit one-hour timeout and resource allocation whose published-rate maximum
+is approximately $1.15. A preflight rejects budgets above $30 or below that maximum;
+the default budget is $5. It resumes its JSONL by default, so restarting the
+same evaluation name skips completed scenarios. Use this detached evaluation as a
+format and adapter smoke test. Check
+that malformed-action rate is near zero and that the adapter loads without missing
+keys before explicitly increasing `--max-problems`, profiles, and seeds for a full
+held-out evaluation.
+
+Both commands must use the same `--heldout-fraction` and `--split-salt` (the
+default is `mockassist-v1`). Evaluation produces
+`evaluation/evaluation-rollouts.jsonl` and `evaluation/evaluation-metrics.json`
+plus TensorBoard events under `evaluation/tensorboard` inside the checkpoint
+volume. It evaluates deterministic rollouts over every
+held-out problem, the `strong`, `average`, and `nervous` candidate profiles, and
+three fixed seeds. Metrics include reward, solution-reached rate, timeout rate,
+elapsed time, hints, malformed action rate, format-retry rate, premature-end rate,
+interviewer-end rate, and 95% bootstrap confidence intervals, with profile and
+category breakdowns. Rollouts are flushed after every episode, so a stopped run
+retains partial results and its logs report explicit episode progress.
+Pass `--baseline-checkpoint <base-model-or-adapter>` to `evaluate` to run the
+same scenarios against a baseline and include trained-minus-baseline deltas.
+
+The environment keeps the `+0.05` valid-turn reward. Candidate Python code runs in
+a short-lived, resource-limited local child process by default and receives no
+direct pass/submission reward. The child first detects syntax errors, top-level
+exceptions, timeouts, and crashes, then invokes ordinary `Solution` methods or
+stateful design-class operation sequences. Outputs are checked against the dataset's
+Python reference implementation on published and deterministically derived private
+inputs. Design problems without a Python reference use their published operation
+outputs plus safe derived replay cases. If no executable oracle can be constructed,
+the result is an infrastructure error and never a pass. A failed run is returned to
+the interviewer; relaying
+that failure and requesting corrected code earns a one-time `+0.03` recovery reward
+for that failure. Successful termination
+earns `+2.0` only after code has passed the sandbox and a complexity claim has been
+observed. Premature termination earns `-1.0`, timeout without a solution earns
+`-0.5`, and an
+unrepairable malformed evaluation action earns `-1.0` without entering the normal
+terminal path. Training completions that stop without ending the environment also
+earn `-1.0`.
+
+No Fly app or droplet configuration is needed for the POC smoke evaluation. The
+local executor uses Python isolated mode, a sanitized environment, a temporary
+working directory, and time/memory/process/output limits. It is not a hardened
+multi-tenant sandbox and should be replaced by container isolation before exposing
+the evaluator to untrusted users.
+
+Remote execution remains available as an explicit option:
+
+```bash
+export MOCKASSIST_CODE_EXECUTOR="remote"
+export MOCKASSIST_CODE_EXECUTOR_URL="https://<runner>/sandbox/execute"
+export MOCKASSIST_CODE_EXECUTOR_TOKEN="<runner-token>"  # when required
+```
+
+The existing Gauntlet names are also supported: when `SANDBOX_RUNNER_URL` is set,
+MockAssist calls `${SANDBOX_RUNNER_URL}/sandbox/execute` and reads the optional
+`SANDBOX_RUNNER_TOKEN`. The runner accepts Python source, a timeout, and public
+problem context and returns `status`, `stdout`, `stderr`, `exit_code`, and
+`timed_out`. Runner/network errors are recorded as infrastructure failures and do
+not qualify for the recovery reward. Candidate source and normalized execution
+results are retained in both training and evaluation rollouts.
+For Modal jobs, pass `--code-executor-url` and, when needed,
+`--code-executor-token`; the function places them in the worker environment and
+does not add them to the spawned training/evaluation command line.
 
 Train the dependency-free tabular Q-learning baseline:
 

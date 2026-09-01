@@ -6,6 +6,16 @@ All notable changes to this project are recorded here.
 
 ### Fixed
 
+- Aligned checkpoint evaluation with the training-time Qwen tool-call template,
+  disabled thinking during structured generation, added one format-repair attempt,
+  and stopped malformed output from receiving a successful terminal reward.
+- Loaded Qwen interviewer adapters through the same multimodal architecture used
+  during training and made evaluation fail on missing LoRA keys instead of silently
+  evaluating a partial adapter.
+- Made the `+2.0` terminal reward conditional on observed code and complexity,
+  penalized premature endings, timeouts, malformed evaluation actions, and
+  incomplete training episodes, and skipped unnecessary candidate generation after
+  an interviewer `END` action.
 - Fixed the deterministic scripted actor selecting `MODIFY_CODE` when the
   interviewer explicitly sent `REQUEST_TEST`. Explicit test and complexity
   requests now take precedence over generic actor action preferences.
@@ -15,6 +25,10 @@ All notable changes to this project are recorded here.
 
 ### Added
 
+- Added shared interviewer prompts, explicit code/complexity/end-state tracking,
+  per-episode evaluation persistence and progress logs, format-retry and
+  premature-end metrics, direct evaluation TensorBoard events, and
+  `--max-problems` smoke evaluations.
 - Added a batch scenario pipeline that joins normalized problems with title
   metadata, selects a deterministic 25–50-problem category-balanced pilot,
   preserves manual maps as overrides, derives heuristic maps from authored
